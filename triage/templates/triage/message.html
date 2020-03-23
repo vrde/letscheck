@@ -1,0 +1,55 @@
+{% extends 'triage/base.html' %}
+
+{% block content %}
+
+    <h1>Original Message</h1>
+
+    <div class="card mb-5">
+        <div class="card-header">
+            Message from {{ message.sender_safe }}, {{ message.dt }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Text</h5>
+            <p class="card-text">{{ message.body }}</p>
+            <h5 class="card-title">Media</h5>
+            {% for media in message.media_set.all %}
+                {% if media.embed_as == "image" %}
+                    <img src="{{ media.url }}" />
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <h1>Triaged News</h1>
+
+    {% for n in news %}
+        <div class="card mb-5">
+            <div class="card-header">
+              {{ n.rating }}: {{ n.title }}
+            </div>
+            <div class="card-body">
+                <div>
+                    {{ n.description }}
+                </div>
+                <hr />
+                <h5 class="card-title">Response</h5>
+                <div>
+                  {{ n.canned_response }}
+                </div>
+            </div>
+            <div class="card-footer">
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="news_id" value="{{ n.id }}" />
+                <button type="submit" class="btn btn-success">Send Response</button>
+              </form>
+            </div>
+        </div>
+    {% empty %}
+    <div class="alert alert-warning" role="alert">
+        No news good news?
+    </div>
+    {% endfor %}
+
+    <a href="{% url 'create' message.id %}" class="btn btn-primary">Create news from this message</a>
+{% endblock %}

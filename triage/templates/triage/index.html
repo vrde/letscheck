@@ -1,0 +1,23 @@
+{% extends 'triage/base.html' %}
+
+{% block content %}
+    {% for message in messages %}
+        <div class="card mb-5">
+            <div class="card-header">
+                Message from {{ message.sender_safe }}, {{ message.dt }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Text</h5>
+                <p class="card-text">{{ message.body }}</p>
+                <h5 class="card-title">Media</h5>
+                {% for media in message.media_set.all %}
+                    {% if media.embed_as == "image" %}
+                        <img src="{{ media.url }}" />
+                    {% endif %}
+                {% endfor %}
+                <hr/>
+                <a href="{% url 'message' message.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

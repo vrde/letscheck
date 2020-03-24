@@ -3,8 +3,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 
-print(settings.MEDIA_URL, settings.MEDIA_ROOT)
-
 urlpatterns = [
     path("triage/", include("triage.urls")),
     path("chat/", include("chat.urls")),

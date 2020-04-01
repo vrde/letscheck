@@ -164,4 +164,6 @@ class TriageViewTest(TestCase):
         self.assertEqual(message.case_request.response.receiver, "1")
         self.assertEqual(message.case_request.response.is_incoming, False)
         self.assertEqual(message.case_request.response.body, "canned response")
-        mock_task.assert_called_with("chat.tasks.send_message", message.case_request.pk)
+        mock_task.assert_called_with(
+            "chat.tasks.send_message", message.case_request.response.pk
+        )

@@ -34,19 +34,18 @@ def case_details(request, case_pk):
         case.news = news
         case.response = message_response
         case.save()
-        # Message and Case are in a 1-to-1 relation, so we can use the case_pk
-        async_task("chat.tasks.send_message", case_pk)
+        async_task("chat.tasks.send_message", message_response.pk)
         return HttpResponseRedirect(reverse(index))
     else:
         context = {
             "case": Case.objects.select_related("request").get(pk=case_pk),
             "news": News.objects.all(),
         }
-    return render(request, "triage/message.html", context=context)
+    return render(request, "triage/case_details.html", context=context)
 
 
 @login_required
-def create(request, message_id):
+def create(request, message_pk):
     if request.method == "POST":
         form = NewsForm(request.POST)
         if form.is_valid():

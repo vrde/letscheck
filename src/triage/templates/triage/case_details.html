@@ -6,13 +6,13 @@
 
     <div class="card mb-5">
         <div class="card-header">
-            Message from {{ message.sender_safe }}, {{ message.dt }}
+            Message from {{ case.request.sender_safe }}, {{ case.request.dt }}
         </div>
         <div class="card-body">
             <h5 class="card-title">Text</h5>
-            <p class="card-text">{{ message.body }}</p>
+            <p class="card-text">{{ case.request.body }}</p>
             <h5 class="card-title">Media</h5>
-            {% for media in message.media_set.all %}
+            {% for media in case.request.media_set.all %}
                 {% if media.embed_as == "image" %}
                     <img src="{{ media.url }}" />
                 {% endif %}
@@ -40,7 +40,7 @@
             <div class="card-footer">
               <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="news_id" value="{{ n.id }}" />
+                <input type="hidden" name="news_pk" value="{{ n.id }}" />
                 <button type="submit" class="btn btn-success">Send Response</button>
               </form>
             </div>
@@ -51,5 +51,6 @@
     </div>
     {% endfor %}
 
-    <a href="{% url 'create' case.pk %}" class="btn btn-primary">Create news from this message</a>
+    <!--a href="{% url 'create' case.pk %}" class="btn btn-primary">Create news</a-->
+    <a href="/admin/triage/news/add" class="btn btn-primary">Create news</a>
 {% endblock %}

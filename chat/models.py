@@ -7,9 +7,17 @@ class Message(models.Model):
     carrier = models.CharField(max_length=100)
     sender = models.CharField(max_length=100)
     receiver = models.CharField(max_length=100)
+    is_incoming = models.BooleanField()
     body = models.TextField()
-    dt = models.DateTimeField(auto_now_add=True)
+    # dt is defined when the message is received
+    # or when the message is sent
+    dt = models.DateTimeField(null=True)
+    # Twilio specific stuff, should live in another model
+    # but I'll keep it here for now.
+    twilio_account_sid = models.CharField(max_length=34, blank=True, null=True)
+    twilio_message_sid = models.CharField(max_length=34, blank=True, null=True)
 
+    @property
     def sender_safe(self):
         return self.sender[:3] + (len(self.sender) - 3) * "•"
 
@@ -19,9 +27,9 @@ class Message(models.Model):
 
 class Media(models.Model):
     message = models.ForeignKey(Message, on_delete=models.CASCADE)
-    url = models.CharField(max_length=1024)
     content_type = models.CharField(max_length=64)
     content_hash = models.CharField(max_length=64, null=True)
+    twilio_media_url = models.CharField(max_length=1024)
 
     @property
     def embed_as(self):

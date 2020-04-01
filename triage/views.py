@@ -1,43 +1,45 @@
-from django.conf import settings
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from chat.models import Message
-from .models import News, MessageToNews
-from .forms import NewsForm
 
-from twilio.rest import Client
+from django_q.tasks import async_task
+
+from chat.models import Message
+from chat.tasks import send_message
+from .models import News, Case
+from .forms import NewsForm
 
 
 @login_required
 def index(request):
-    context = {
-        "messages": Message.objects.prefetch_related("media_set")
-        .filter(messagetonews__isnull=True)
-        .order_by("-dt")
-    }
+    context = {"cases": Case.objects.open().select_related("request")}
     return render(request, "triage/index.html", context=context)
 
 
 @login_required
-def message(request, message_id):
+def case_details(request, case_pk):
     if request.method == "POST":
-        message = Message.objects.get(id=message_id)
-        news = News.objects.get(id=request.POST["news_id"])
-        message_to_news = MessageToNews.objects.create(message=message, news=news)
-        message_to_news.save()
-
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        message = client.messages.create(
+        case = Case.objects.get(pk=case_pk)
+        news = News.objects.get(pk=request.POST["news_pk"])
+        # TODO send error message
+        assert news.canned_response
+        message_response = Message.objects.create(
+            carrier=case.request.carrier,
+            sender=case.request.receiver,
+            receiver=case.request.sender,
             body=news.canned_response,
-            from_="whatsapp:+14155238886",
-            to="whatsapp:{}".format(message.sender),
+            is_incoming=False,
         )
+        case.news = news
+        case.response = message_response
+        case.save()
+        # Message and Case are in a 1-to-1 relation, so we can use the case_pk
+        async_task("chat.tasks.send_message", case_pk)
         return HttpResponseRedirect(reverse(index))
     else:
         context = {
-            "message": Message.objects.get(id=message_id),
+            "case": Case.objects.select_related("request").get(pk=case_pk),
             "news": News.objects.all(),
         }
     return render(request, "triage/message.html", context=context)

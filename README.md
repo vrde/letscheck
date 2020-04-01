@@ -57,8 +57,19 @@ In the other one, run:
 python manage.py qcluster
 ```
 
+# About fake-news and misinformation
+
+## Italy
+
+> #coronavirus: Italian regulator #AGCOM call platforms and broadcasters to make correct information and remove fake news
+— https://twitter.com/InnoGenna/status/1242863421865025536
+
+
 # Other links to organize
 
+- https://drive.google.com/file/d/1KHhJCNYat68SPCuZaMRGZh747FLyx9lm/view
+- https://twitter.com/EU_Commission/status/1244576714904264706
+- [](https://twitter.com/InnoGenna/status/1242863421865025536)
 - https://www.motherjones.com/media/2020/03/whatsapp-coronavirus-misinformation/
 - https://www.buzzfeednews.com/article/nishitajha/coronavirus-india-whatsapp-rumors
 - https://www.theguardian.com/world/2020/mar/20/whatsapp-in-talks-with-nhs-to-set-up-coronavirus-chatbot

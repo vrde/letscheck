@@ -1,4 +1,6 @@
 from django import forms
+from django.utils.timezone import now
+
 from .models import Message, Media
 
 
@@ -10,6 +12,8 @@ class WhatsappMessage(forms.Form):
     To = forms.CharField(max_length=100)
     Body = forms.CharField(required=False)
     NumMedia = forms.IntegerField(min_value=0, max_value=50)
+    AccountSid = forms.CharField(max_length=34)
+    MessageSid = forms.CharField(max_length=34)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,6 +51,8 @@ class WhatsappMessage(forms.Form):
         # FIXME: Learn how to properly validate
         cleaned_data["body"] = cleaned_data.get("Body")
         cleaned_data["media"] = []
+        cleaned_data["twilio_account_sid"] = cleaned_data["AccountSid"]
+        cleaned_data["twilio_message_sid"] = cleaned_data["MessageSid"]
 
         # FIXME: why do I have to manually check if the fields are defined?
         # They are dynamically added in __init__, that should be enough
@@ -62,18 +68,25 @@ class WhatsappMessage(forms.Form):
                 url = cleaned_data[url_key]
             except KeyError:
                 self.add_error(url_key, "Required")
-            cleaned_data["media"].append({"content_type": content_type, "url": url})
+            cleaned_data["media"].append(
+                {"content_type": content_type, "twilio_media_url": url}
+            )
 
     def save(self, commit=True):
         message = Message.objects.create(
             carrier=self.cleaned_data["carrier"],
             sender=self.cleaned_data["sender"],
             receiver=self.cleaned_data["receiver"],
+            is_incoming=True,
             body=self.cleaned_data["body"],
+            dt=now(),
+            twilio_account_sid=self.cleaned_data["twilio_account_sid"],
+            twilio_message_sid=self.cleaned_data["twilio_message_sid"],
         )
         for media in self.cleaned_data["media"]:
             message.media_set.create(
-                url=media["url"], content_type=media["content_type"]
+                twilio_media_url=media["twilio_media_url"],
+                content_type=media["content_type"],
             )
         if commit:
             message.save()

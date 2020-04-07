@@ -17,5 +17,4 @@ six==1.14.0
 sqlparse==0.3.1
 twilio==6.37.0
 urllib3==1.25.8
-uWSGI==2.0.18
 wcwidth==0.1.9

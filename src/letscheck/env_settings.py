@@ -1,0 +1,31 @@
+from os import environ as e
+
+if "APP_DEBUG" in e:
+    DEBUG = e["APP_DEBUG"] == "1"
+
+if "APP_SECRET_KEY" in e:
+    SECRET_KEY = e["APP_SECRET_KEY"]
+
+if "APP_ALLOWED_HOSTS" in e:
+    ALLOWED_HOSTS = e["APP_ALLOWED_HOSTS"].split(",")
+
+if "APP_STATIC_URL" in e:
+    STATIC_URL = e["APP_STATIC_URL"]
+
+if "APP_MEDIA_URL" in e:
+    MEDIA_URL = e["APP_MEDIA_URL"]
+
+if "APP_STATIC_ROOT" in e:
+    STATIC_ROOT = e["APP_STATIC_ROOT"]
+
+if "APP_MEDIA_ROOT" in e:
+    MEDIA_ROOT = e["APP_MEDIA_ROOT"]
+
+if "APP_TWILIO_ACCOUNT_SID" in e:
+    TWILIO_ACCOUNT_SID = e["APP_TWILIO_ACCOUNT_SID"]
+
+if "APP_TWILIO_AUTH_TOKEN" in e:
+    TWILIO_AUTH_TOKEN = e["APP_TWILIO_AUTH_TOKEN"]
+
+if "APP_TWILIO_SENDER" in e:
+    TWILIO_SENDER = e["APP_TWILIO_SENDER"]

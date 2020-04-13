@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #ffeb3b;
+}
+
+main {
+  padding-top: 3.5rem;
+}
+
+.jumbotron {
+  border-radius: 0;
+  /*
+  background-image: url("/static/content/images/bg.png");
+  background-color: var(--primary-color);
+  */
+}

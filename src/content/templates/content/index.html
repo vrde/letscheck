@@ -1,1 +1,97 @@
-Hello
+{% extends 'content/base.html' %}
+
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'content/css/style.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">LetsCheck Demo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vrde/letscheck"
+              >Source Code</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+      <div class="jumbotron p-4 p-md-5">
+        <div class="container">
+          <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">LetsCheck Example</h1>
+            <p class="lead my-3">This is a sample fact checking website to showcase what LetsCheck is and how it works. You can also play with a demo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col">
+            <h2 class="display-4">
+              Try the Demo!
+            </h2>
+            <p><em>Note: "Step 1" is required to enable this demo because it uses a <strong>test WhatsApp number</strong>.</em></p>
+            <h3 class="mt-5">Step 1: Enable the demo</h3>
+            <p>Open WhatsApp and send <code>join porch-difference</code> to <code>+14155238886</code>, or use the button below.</p>
+            <a href="https://wa.me/14155238886?text=join%20porch-difference" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Message us to enable the demo</a>
+            <h3 class="mt-5">Step 2: Send us a fake news</h3>
+            <p>Open WhatsApp and send <code>coronavirus was leaked from a chinese lab</code> to <code>+14155238886</code>, or use the button below.</p>
+            <a href="https://wa.me/14155238886?text=coronavirus%20was%20leaked%20from%20a%20chinese%20lab" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Verify a fake news</a>
+          </div>
+          <!--div class="col-md-6">
+            <img class="qrcode" src="{% static 'content/images/qrcode.svg' %}" />
+          </div-->
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="display-4">
+              News in our database
+            </h2>
+          </div>
+        </div>
+        {% for n in news %}
+        <div class="row">
+          <div class="card mb-5">
+            <div class="card-header">
+              {{ n.rating }}: {{ n.title }}
+            </div>
+            <div class="card-body">
+              <div>
+                {{ n.description|linebreaks}}
+              </div>
+            </div>
+            <div class="card-footer">
+              This news has been verified {{ n.case_set.all|length }} times.
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning" role="alert">
+          No news good news?
+        </div>
+        {% endfor %}
+      </div>
+
+    </main>
+
+{% endblock %}

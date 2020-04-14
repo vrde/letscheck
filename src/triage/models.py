@@ -45,7 +45,13 @@ class Case(models.Model):
     objects = CaseManager()
 
 
+from django_q.tasks import async_task
+from django.conf import settings
+
+
 @receiver(post_save, sender=Message)
 def create_case_from_new_message(sender, instance, created, **kwargs):
     if created and instance.is_incoming:
-        Case.objects.create(request=instance)
+        case = Case.objects.create(request=instance)
+        if settings.AUTOCLASSIFY:
+            async_task("triage.tasks.classify", case.pk)

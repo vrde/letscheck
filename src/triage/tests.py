@@ -167,3 +167,59 @@ class TriageViewTest(TestCase):
         mock_task.assert_called_with(
             "chat.tasks.send_message", message.case_request.response.pk
         )
+
+
+class TaskClassifyTest(TestCase):
+    def setUp(self):
+        from .models import News
+
+        news = News.objects.create(
+            title="Coronavirus is a bioweapon leaked from Wuhan lab",
+            description="Not true",
+            canned_response="fake news",
+        )
+
+    @patch("triage.tasks.async_task")
+    def test_should_classify_the_demo_message(self, mock_task):
+        from .models import Case
+        from chat.models import Message
+        from .tasks import classify
+
+        message = Message.objects.create(
+            carrier="whatsapp",
+            sender="2",
+            receiver="1",
+            is_incoming=True,
+            body="Coronavirus is bioweapon leaked from Wuhan lab",
+        )
+        case = Case.objects.get(pk=message.pk)
+        classify(case.pk)
+        case.refresh_from_db()
+        response = case.response
+        self.assertIsNotNone(response)
+        self.assertEqual(response.carrier, "whatsapp")
+        self.assertEqual(response.sender, "1")
+        self.assertEqual(response.receiver, "2")
+        self.assertEqual(response.is_incoming, False)
+        self.assertEqual(response.body, "fake news")
+        mock_task.assert_called_with("chat.tasks.send_message", response.pk)
+
+    @patch("triage.tasks.async_task")
+    def test_should_ignore_other_messages(self, mock_task):
+        from .models import Case
+        from chat.models import Message
+        from .tasks import classify
+
+        message = Message.objects.create(
+            carrier="whatsapp",
+            sender="2",
+            receiver="1",
+            is_incoming=True,
+            body="something something coronavirus something",
+        )
+        case = Case.objects.get(pk=message.pk)
+        classify(case.pk)
+        case.refresh_from_db()
+        response = case.response
+        self.assertIsNone(response)
+        mock_task.assert_not_called()

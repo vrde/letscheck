@@ -1,5 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+
 :root {
   --primary-color: #ffeb3b;
+}
+
+body {
+  font-family: "PT Sans", sans-serif;
 }
 
 main {
@@ -8,8 +14,43 @@ main {
 
 .jumbotron {
   border-radius: 0;
-  /*
+}
+
+.jumbotron.hero {
+  position: relative;
+  border-radius: 0;
   background-image: url("/static/content/images/bg.png");
   background-color: var(--primary-color);
-  */
+}
+
+.jumbotron.hero p {
+  font-size: 1.5rem;
+}
+
+.jumbotron.hero:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+img.qrcode {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+.nav-pills .nav-link {
+  border: 1px solid;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }

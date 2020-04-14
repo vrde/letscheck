@@ -32,32 +32,80 @@
     </nav>
 
     <main role="main">
-      <div class="jumbotron p-4 p-md-5">
+      <div class="jumbotron hero p-sm-8">
         <div class="container">
-          <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">LetsCheck Example</h1>
-            <p class="lead my-3">This is a sample fact checking website to showcase what LetsCheck is and how it works. You can also play with a demo.</p>
+          <div class="col-md-8 px-0">
+            <h1 class="display-3 font-italic">LetsCheck Demo</h1>
+            <p class="lead my-3">LetsCheck is a fact–checking website and a chatbot to verify fake news. What you see here is a demo instance of LetsCheck. Send a message to our chatbot, or browse our database of facts!
+            </p>
+            <!--You can use both or, if you already have a website, you can import your database of facts in LetsCheck.-->
           </div>
         </div>
       </div>
 
-      <div class="container mb-5">
-        <div class="row">
-          <div class="col">
-            <h2 class="display-4">
-              Try the Demo!
-            </h2>
-            <h3 class="mt-5">Step 1: Enable the demo*</h3>
-            <p>Open WhatsApp and send <code>join porch-difference</code> to <code>+14155238886</code>, or use the button below.</p>
-            <p><em>*Note: "Step 1" will NOT be required when running LetsCheck in production.</em></p>
-            <a href="https://wa.me/14155238886?text=join%20porch-difference" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Message us to enable the demo</a>
-            <h3 class="mt-5">Step 2: Send us a fake news</h3>
-            <p>Open WhatsApp and send <code>coronavirus was leaked from a chinese lab</code> to <code>+14155238886</code>, or use the button below.</p>
-            <a href="https://wa.me/14155238886?text=coronavirus%20was%20leaked%20from%20a%20chinese%20lab" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Verify a fake news</a>
+
+      <div class="jumbotron p-sm-8 p-4">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-12 text-center">
+              <h2 class="display-4">
+                Try the chatbot
+              </h2>
+              <p>Are on a <strong>smartphone</strong> with WhatsApp installed?</p>
+            </div>
+            <div class="col">
+              <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-mobile-tab" data-toggle="pill" href="#pills-mobile" role="tab" aria-controls="pills-mobile" aria-selected="false">
+                    Yes, I am
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-desktop-tab" data-toggle="pill" href="#pills-desktop" role="tab" aria-controls="pills-desktop" aria-selected="false">
+                    No, I am not
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <!--div class="col-md-6">
-            <img class="qrcode" src="{% static 'content/images/qrcode.svg' %}" />
-          </div-->
+
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade" id="pills-mobile" role="tabpanel" aria-labelledby="pills-mobile-tab">
+              <div class="row">
+                <div class="col-sm mb-5">
+                  <h3>Join</h3>
+                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.
+                  </p>
+                  <a href="https://wa.me/14155238886?text=join%20porch-difference" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Send magic word</a>
+                  <p class="mt-2"><em>Note: this step will <strong>not</strong> be required in a production setting.</em></p>
+                </div>
+
+                <div class="col-sm mb-5">
+                  <h3>Verify</h3>
+                  <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
+                  <a href="https://wa.me/14155238886?text=coronavirus%20was%20leaked%20from%20a%20chinese%20lab" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Verify a fake news</a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-desktop" role="tabpanel" aria-labelledby="pills-desktop-tab">
+              <div class="row">
+                <div class="col-sm mb-5">
+                  <h3>Connect</h3>
+                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.
+                  <p>Open WhatsApp and send <code>join porch-difference</code> to <code>+14155238886</code>, or use your phone to scan the qrcode below.</p>
+                  <img class="qrcode" src="{% static 'content/images/connect.svg' %}" />
+                  <p class="mt-2"><em>Note: this step will <strong>not</strong> be required in a production setting.</em></p>
+                </div>
+
+                <div class="col-sm mb-5">
+                  <h3>Verify</h3>
+                  <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
+                  <p>Open WhatsApp and send <code>coronavirus was leaked from a chinese lab</code> to <code>+14155238886</code>, or your phone to scan the qrcode below.</p>
+                  <img class="qrcode" src="{% static 'content/images/verify.svg' %}" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

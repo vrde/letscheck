@@ -36,7 +36,7 @@
         <div class="container">
           <div class="col-md-8 px-0">
             <h1 class="display-3 font-italic">LetsCheck Demo</h1>
-            <p class="lead my-3">LetsCheck is a fact–checking website and a chatbot to verify fake news. What you see here is a demo instance of LetsCheck. Send a message to our chatbot, or browse our database of facts!
+            <p class="lead my-3">LetsCheck is a fact–checking website and a chatbot to verify fake news. It's free and open source code anyone can use. What you see here is a demo of LetsCheck. Send a message to our chatbot, or browse our database of facts!
             </p>
             <!--You can use both or, if you already have a website, you can import your database of facts in LetsCheck.-->
           </div>
@@ -73,15 +73,14 @@
             <div class="tab-pane fade" id="pills-mobile" role="tabpanel" aria-labelledby="pills-mobile-tab">
               <div class="row">
                 <div class="col-sm mb-5">
-                  <h3>Join</h3>
-                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.
-                  </p>
+                  <h3>1. Connect</h3>
+                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.</p>
                   <a href="https://wa.me/14155238886?text=join%20porch-difference" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Send magic word</a>
-                  <p class="mt-2"><em>Note: this step will <strong>not</strong> be required in a production setting.</em></p>
+                  <p class="mt-2"><em>Note: this step <strong>is not</strong> required in a production setting.</em></p>
                 </div>
 
                 <div class="col-sm mb-5">
-                  <h3>Verify</h3>
+                  <h3>2. Verify</h3>
                   <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
                   <a href="https://wa.me/14155238886?text=Coronavirus%20is%20bioweapon%20leaked%20from%20a%20lab%20in%20Wuhan" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Verify a fake news</a>
                 </div>
@@ -90,15 +89,15 @@
             <div class="tab-pane fade" id="pills-desktop" role="tabpanel" aria-labelledby="pills-desktop-tab">
               <div class="row">
                 <div class="col-sm mb-5">
-                  <h3>Connect</h3>
+                  <h3>1. Connect</h3>
                   <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.
                   <p>Open WhatsApp and send <code>join porch-difference</code> to <code>+14155238886</code>, or use your phone to scan the qrcode below.</p>
                   <img class="qrcode" src="{% static 'content/images/connect.svg' %}" />
-                  <p class="mt-2"><em>Note: this step will <strong>not</strong> be required in a production setting.</em></p>
+                  <p class="mt-2"><em>Note: this step <strong>is not</strong> required in a production setting.</em></p>
                 </div>
 
                 <div class="col-sm mb-5">
-                  <h3>Verify</h3>
+                  <h3>2. Verify</h3>
                   <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
                   <p>Open WhatsApp and send <code>Coronavirus is a bioweapon leaked from a lab in Wuhan</code> to <code>+14155238886</code>, or your phone to scan the qrcode below.</p>
                   <img class="qrcode" src="{% static 'content/images/verify.svg' %}" />
@@ -140,6 +139,17 @@
         {% endfor %}
       </div>
 
+      <div class="jumbotron p-sm-8 p-4">
+        <div class="container text-center">
+          <h2 class="display-4">
+            Learn more about LetsCheck.
+          </h2>
+          <p>
+          <a class="btn btn-primary btn-lg" href="mailto:agranzot@mailbox.org?subject=Let's talk about LetsCheck" role="button">Contact Us</a>
+          <a class="btn btn-secondary btn-lg" href="https://github.com/vrde/letscheck" role="button">Source Code</a>
+          </p>
+        </div>
+      </div>
     </main>
 
 {% endblock %}

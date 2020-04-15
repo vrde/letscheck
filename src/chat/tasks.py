@@ -30,13 +30,23 @@ def download_media(media_pk):
 
 def send_message(message_pk):
     message = Message.objects.get(pk=message_pk)
-    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    response = client.messages.create(
-        body=message.body,
-        from_=":".join([message.carrier, message.sender]),
-        to=":".join([message.carrier, message.receiver]),
-    )
-    message.twilio_account_sid = settings.TWILIO_ACCOUNT_SID
-    message.twilio_message_sid = response.sid
-    message.dt = now()
-    message.save()
+    if message.sender == settings.SULLA_SENDER:
+        requests.post(
+            settings.SULLA_API_ENDPOINT,
+            data={"recipient": message.receiver, "body": message.body},
+        )
+        message.twilio_account_sid = "sulla"
+        message.twilio_message_sid = "sulla"
+        message.dt = now()
+        message.save()
+    else:
+        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        response = client.messages.create(
+            body=message.body,
+            from_=":".join([message.carrier, message.sender]),
+            to=":".join([message.carrier, message.receiver]),
+        )
+        message.twilio_account_sid = settings.TWILIO_ACCOUNT_SID
+        message.twilio_message_sid = response.sid
+        message.dt = now()
+        message.save()

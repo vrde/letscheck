@@ -142,5 +142,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 AUTOCLASSIFY = False
 TWILIO_ACCOUNT_SID = None
 TWILIO_AUTH_TOKEN = None
+SULLA_SHARED_SECRET = None
 
 from .local_settings import *

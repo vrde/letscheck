@@ -52,7 +52,7 @@
                 Try the chatbot
               </h2>
             </div>
-            <div class="col-6 mx-auto">
+            <div class="col-md-6 mx-auto">
               <a href="https://wa.me/17163330010?text=Coronavirus%20is%20bioweapon%20leaked%20from%20a%20lab%20in%20Wuhan" class="btn btn-success btn-block btn-lg" target="_blank" role="button" aria-pressed="true">Verify a fake news</a>
 
               <p class="mt-3"><strong>Doesn't work?</strong> Open WhatsApp and send <code>Coronavirus is a bioweapon leaked from a lab in Wuhan</code> to <code>+1&nbsp;716&nbsp;333&nbsp;0010</code></p>
@@ -77,7 +77,7 @@
             </div>
             <div class="card-body">
               <div>
-                {{ n.description|linebreaks}}
+                {{ n.description|linebreaks|truncatechars:256}}
               </div>
             </div>
             <div class="card-footer">

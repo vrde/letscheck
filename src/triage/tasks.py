@@ -13,13 +13,13 @@ from django_q.tasks import async_task
 
 def classify(case_pk):
     case = Case.objects.get(pk=case_pk)
-    news = News.objects.get(title__icontains="bioweapon")
+    news = News.objects.filter(title__icontains="garlic").first()
     body = case.request.body.lower()
 
-    if not news.canned_response:
+    if not news or not news.canned_response:
         return
 
-    if "bioweapon" in body and "coronavirus" in body:
+    if "garlic" in body and "coronavirus" in body:
         message_response = Message.objects.create(
             carrier=case.request.carrier,
             sender=case.request.receiver,
@@ -30,4 +30,6 @@ def classify(case_pk):
         case.news = news
         case.response = message_response
         case.save()
+        case.request.sender = ""
+        case.request.save()
         async_task("chat.tasks.send_message", message_response.pk)

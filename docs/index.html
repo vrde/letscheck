@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>
+      LetsCheck, a free open source platform to empower fact-checking
+      organizations
+    </title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./i-love-cats.js"></script>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">LetsCheck</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#demo">Demo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contribute">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vrde/letscheck"
+              >Source Code</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron hero mb-5">
+        <div class="container">
+          <div class="bubble mb-5">
+            <h1 class="display-3">
+              Fight fake news straight from messaging
+              <span style="white-space: nowrap">
+                apps <img class="emoji" src="./images/fisted-hand-sign.png" />
+              </span>
+            </h1>
+            <span class="metadata">
+              <span class="time">6:48 PM</span>
+              <span class="tick">
+                <img src="./images/doubletick.svg" />
+              </span>
+            </span>
+          </div>
+          <!--h1 class="display-3">Fight fake–news straight in messaging apps.</h1 -->
+          <p>
+            <strong
+              >LetsCheck is a chatbot that lowers the barrier to verify fake
+              news.</strong
+            >
+            By integrating with modern messaging platforms, it makes fact
+            checking as easy as <strong>forwarding a message</strong>. LetsCheck
+            is <strong>free and open source</strong> software.
+            <!--LetsCheck
+          LetsCheck makes your fact-checking website accessible from messaging apps. It's free and open source code.
+            lowers the barrier to verify news by making it as easy as
+            <strong>forwarding a message</strong>.-->
+            <!--
+            LetsCheck is a dynamic database in continuous evolution, integrated
+            with modern messaging platforms.
+            -->
+          </p>
+        </div>
+      </div>
+
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-md mb-3">
+            <h2>Accessible to the Many</h2>
+            <p>
+              By integrating with modern messaging platforms, LetsCheck enables
+              virtually anyone to verify news just by
+              <strong>forwarding a message.</strong>
+            </p>
+          </div>
+
+          <div class="col-md mb-3">
+            <h2>Automated, but not too much</h2>
+            <p>
+              Some degree of automation is required in order to scale. LetsCheck
+              does not detect fake news automatically. Instead, it implements a
+              message clustering algorithm to
+              <strong>automatically reply to already classified news</strong>.
+            </p>
+          </div>
+
+          <div class="col-md mb-3">
+            <h2>Free and Open</h2>
+            <p>
+              There is no transparency without free and open source software.
+              LetsCheck is <strong>licensed under AGPL-3</strong>. Anyone has
+              the freedom to run, copy, distribute, study, change and improve
+              it, free of charge.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="demo" class="jumbotron">
+        <div class="container bubble">
+          <h2 class="display-4 p-4">
+            Lower the barrier to fact&#8209;checking.<br />See how it
+            <span style="white-space: nowrap"
+              >works
+              <img class="emoji" src="./images/down-pointing-backhand.png" />
+            </span>
+          </h2>
+          <span class="metadata">
+            <span class="time">6:48 PM</span
+            ><span class="tick">
+              <img src="./images/doubletick.svg" />
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="container mb-5 how-it-works">
+        <div class="row align-items-center mb-5 mb-md-n4">
+          <div class="col-md-6">
+            <h2>
+              A friend forwards you a message that looks suspicious
+            </h2>
+            <p>
+              Misinformation is often spread through private messaging apps.
+              Messaging apps are <em>private</em> social networks that makes it
+              <strong>impossible to publicly verify news</strong>.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./images/step1.jpeg" alt="" />
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5 mb-md-n4">
+          <div class="col-md-6 order-md-last">
+            <h2>
+              You forward the message to a fact checking organization
+            </h2>
+            <p>
+              Verifying information should be
+              <strong>as easy as forwarding a message</strong>.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./images/step2.jpeg" alt="" />
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5 mb-md-n4">
+          <div class="col-md-6">
+            <h2>The message is processed by the fact checking organization</h2>
+            <p>
+              LetsCheck handles the incoming message. If the message is new to
+              the system a fact–checker will process it and add a
+              <strong>new fact to the database</strong>, otherwise an automatic
+              reply is sent back to the user.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./images/step3.gif" alt="" />
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5 mb-md-n4">
+          <div class="col-md-6 order-md-last">
+            <h2>You receive an answer from the fact checking organization</h2>
+            <p>
+              A <strong>concise message</strong> tells you if it's a fake news
+              or not.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./images/step4.jpeg" alt="" />
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+          <div class="col-md-6">
+            <h2>Send the answer back to your friend!</h2>
+            <p>
+              You can forward the reply back to your friend. Sharing is caring!
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./images/step5.jpeg" alt="" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <a
+              class="btn btn-primary btn-lg"
+              href="https://letscheck.granzotto.net/"
+              role="button"
+              target="_blank"
+              >Launch the Demo</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="contribute" class="jumbotron mb-5">
+        <div class="container">
+          <div class="bubble">
+            <h2 class="display-4 p-4">
+              Help us building
+              <span style="white-space: nowrap">
+                LetsCheck
+                <img class="emoji" src="./images/construction-worker.png" />
+              </span>
+            </h2>
+            <span class="metadata">
+              <span class="time">6:48 PM</span
+              ><span class="tick">
+                <img src="./images/doubletick.svg" />
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-md">
+            <h2>Talk to us</h2>
+            <p>
+              We are building LetsCheck to empower fact&#8209;checking
+              organizations, newspapers, and public institutions. Are you one of
+              them?
+            </p>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="mailto:agranzot@mailbox.org?subject=Let's talk about LetsCheck"
+                role="button"
+              >
+                Contact us &raquo;
+              </a>
+            </p>
+          </div>
+
+          <div class="col-md">
+            <h2>Fund us</h2>
+            <p>
+              Software doesn't grow on trees. We started this initiative on our
+              budget, but we need funds to continue working on it. Drop us an
+              email if you can help us with funding.
+            </p>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="mailto:agranzot@mailbox.org?subject=Let's talk about LetsCheck"
+                role="button"
+              >
+                Help us &raquo;
+              </a>
+            </p>
+          </div>
+
+          <div class="col-md">
+            <h2>Contribute</h2>
+            <p>
+              You don't need to be a developer to help LetsCheck grow. Our
+              development process is transparent, and all our activity is
+              public.
+            </p>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="https://github.com/vrde/letscheck"
+                role="button"
+              >
+                Open issues &raquo;
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col text-center">
+          <a
+            href="mailto:agranzot@mailbox.org?subject=I clicked on the waving hand"
+            target="_blank"
+          >
+            <img class="wave" src="./images/waving-hand-sign.png" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container">
+      Emojis are from WhatsApp and I hope they don't get mad to us for using
+      them. The rest of this work is licensed under a
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"
+        >Creative Commons Attribution-NonCommercial 4.0 International License</a
+      >.
+    </footer>
+  </body>
+</html>

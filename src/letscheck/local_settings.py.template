@@ -10,9 +10,13 @@ ALLOWED_HOSTS = ["*"]
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = "/path/to/static"
+MEDIA_ROOT = "/path/to/media"
 
 TWILIO_ACCOUNT_SID = ""
 TWILIO_AUTH_TOKEN = ""
 TWILIO_SENDER = ""
+
+SULLA_SHARED_SECRET = None
+SULLA_API_ENDPOINT = "http://localhost:8001/messages/create"
+SULLA_SENDER = ""

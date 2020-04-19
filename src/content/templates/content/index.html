@@ -3,153 +3,114 @@
 {% load static %}
 
 {% block head %}
-  <link rel="stylesheet" href="{% static 'content/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'content/css/style.css' %}" />
 {% endblock %}
 
 {% block body %}
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">LetsCheck Demo</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">LetsCheck Demo</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/vrde/letscheck"
-              >Source Code</a>
-          </li>
-        </ul>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/vrde/letscheck"
+                            >Source Code</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main role="main">
+  <div class="jumbotron hero p-sm-8">
+    <div class="container">
+      <div class="col-md-8 px-0">
+        <h1 class="display-2">LetsCheck Demo</h1>
+        <p class="lead my-3">LetsCheck is a fact–checking website and a chatbot to verify fake news. It's free and open source code anyone can use. What you see here is a demo of LetsCheck. Send a message to our chatbot, or browse our database of facts!
+        </p>
+        <!--You can use both or, if you already have a website, you can import your database of facts in LetsCheck.-->
       </div>
-    </nav>
-
-    <main role="main">
-      <div class="jumbotron hero p-sm-8">
-        <div class="container">
-          <div class="col-md-8 px-0">
-            <h1 class="display-3 font-italic">LetsCheck Demo</h1>
-            <p class="lead my-3">LetsCheck is a fact–checking website and a chatbot to verify fake news. It's free and open source code anyone can use. What you see here is a demo of LetsCheck. Send a message to our chatbot, or browse our database of facts!
-            </p>
-            <!--You can use both or, if you already have a website, you can import your database of facts in LetsCheck.-->
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
 
 
-      <div class="jumbotron p-sm-8 p-4">
-        <div class="container">
-          <div class="row mb-5">
-            <div class="col-12 text-center">
-              <h2 class="display-4">
-                Try the chatbot
-              </h2>
-              <p>Are on a <strong>smartphone</strong> with WhatsApp installed?</p>
-            </div>
-            <div class="col">
-              <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-mobile-tab" data-toggle="pill" href="#pills-mobile" role="tab" aria-controls="pills-mobile" aria-selected="false">
-                    Yes, I am
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-desktop-tab" data-toggle="pill" href="#pills-desktop" role="tab" aria-controls="pills-desktop" aria-selected="false">
-                    No, I am not
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-mobile" role="tabpanel" aria-labelledby="pills-mobile-tab">
-              <div class="row">
-                <div class="col-sm mb-5">
-                  <h3>1. Connect</h3>
-                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.</p>
-                  <a href="https://wa.me/14155238886?text=join%20porch-difference" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Send magic word</a>
-                  <p class="mt-2"><em>Note: this step <strong>is not</strong> required in a production setting.</em></p>
-                </div>
-
-                <div class="col-sm mb-5">
-                  <h3>2. Verify</h3>
-                  <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
-                  <a href="https://wa.me/14155238886?text=Coronavirus%20is%20bioweapon%20leaked%20from%20a%20lab%20in%20Wuhan" class="btn btn-success btn-block btn-lg" role="button" aria-pressed="true">Verify a fake news</a>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-desktop" role="tabpanel" aria-labelledby="pills-desktop-tab">
-              <div class="row">
-                <div class="col-sm mb-5">
-                  <h3>1. Connect</h3>
-                  <p>You need to send us a magic word to enable the demo. Tap the button below and send us the message you see.
-                  <p>Open WhatsApp and send <code>join porch-difference</code> to <code>+14155238886</code>, or use your phone to scan the qrcode below.</p>
-                  <img class="qrcode" src="{% static 'content/images/connect.svg' %}" />
-                  <p class="mt-2"><em>Note: this step <strong>is not</strong> required in a production setting.</em></p>
-                </div>
-
-                <div class="col-sm mb-5">
-                  <h3>2. Verify</h3>
-                  <p>Send a fake news to LetsCheck and see how the chatbot answers. We are not a fact–checking website, so it might take some time to answer you :)</p>
-                  <p>Open WhatsApp and send <code>Coronavirus is a bioweapon leaked from a lab in Wuhan</code> to <code>+14155238886</code>, or your phone to scan the qrcode below.</p>
-                  <img class="qrcode" src="{% static 'content/images/verify.svg' %}" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2 class="display-4">
-              News in our database
-            </h2>
-          </div>
-        </div>
-        {% for n in news %}
-        <div class="row">
-          <div class="card mb-5">
-            <div class="card-header">
-              {{ n.rating }}: {{ n.title }}
-            </div>
-            <div class="card-body">
-              <div>
-                {{ n.description|linebreaks}}
-              </div>
-            </div>
-            <div class="card-footer">
-              This news has been verified {{ n.case_set.all|length }} times.
-            </div>
-          </div>
-        </div>
-        {% empty %}
-        <div class="alert alert-warning" role="alert">
-          No news good news?
-        </div>
-        {% endfor %}
-      </div>
-
-      <div class="jumbotron p-sm-8 p-4">
-        <div class="container text-center">
+    <div class="container demo">
+      <div class="row mb-5">
+        <div class="col-12 mb-3 text-center">
           <h2 class="display-4">
-            Learn more about LetsCheck.
+            Try the chatbot
           </h2>
-          <p>
-          <a class="btn btn-primary btn-lg" href="mailto:agranzot@mailbox.org?subject=Let's talk about LetsCheck" role="button">Contact Us</a>
-          <a class="btn btn-secondary btn-lg" href="https://github.com/vrde/letscheck" role="button">Source Code</a>
-          </p>
+        </div>
+        <div class="col-md-5 mb-3">
+          <img src="{% static 'content/images/forwarded-message-garlic.jpg' %}">
+        </div>
+        <div class="col-md-7 align-self-center">
+          <ol>
+            <li>A friend forwards you a message.</li>
+            <li>You forward it to LetsCheck to verify it.</li>
+            <li>LetsCheck gives you an answer.</li>
+          </ol>
+          <a href="https://wa.me/17163330010?text={{message|urlencode}}" class="btn btn-primary btn-block btn-lg" target="_blank" role="button">Forward the message to +1&nbsp;716&nbsp;333&nbsp;0010<br/><em>Your phone number is deleted as soon as we answer</em></a>
+          <p class="mt-3"><strong>Doesn't work?</strong> Try out the demo from your smartphone or tablet.</p>
         </div>
       </div>
-    </main>
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="display-4">
+          News in our database
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      {% for n in news %}
+      <div class="col-sm-4">
+        <div class="card mb-5">
+          <div class="card-header {% if n.rating|lower == "false" %}bg-danger text-white{% endif %}">
+            {{ n.rating }}: {{ n.title }}
+          </div>
+          <div class="card-body">
+            <div>
+              {{ n.description|linebreaks|truncatechars:256}}
+            </div>
+          </div>
+          <div class="card-footer">
+            This news has been verified {{ n.case_set.all|length }} times.
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="alert alert-warning" role="alert">
+        No news good news?
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="jumbotron p-sm-8 p-4">
+    <div class="container text-center">
+      <h2 class="display-4">
+        Learn more about LetsCheck.
+      </h2>
+      <p>
+        <a class="btn btn-primary btn-lg" href="mailto:agranzot@mailbox.org?subject=Let's talk about LetsCheck" role="button">Contact Us</a>
+        <a class="btn btn-secondary btn-lg" href="https://github.com/vrde/letscheck" role="button">Source Code</a>
+      </p>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

@@ -34,6 +34,8 @@ def case_details(request, case_pk):
         case.news = news
         case.response = message_response
         case.save()
+        case.request.sender = ""
+        case.request.save()
         async_task("chat.tasks.send_message", message_response.pk)
         return HttpResponseRedirect(reverse(index))
     else:

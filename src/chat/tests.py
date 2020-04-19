@@ -247,7 +247,7 @@ class TaskDownloadMediaTest(TestCase):
 class TaskSendMessageTest(TestCase):
     @patch("chat.tasks.Client")
     @patch("chat.tasks.now", return_value=now())
-    def test_should_send_the_message_and_update_sid_dt(self, mock_now, mock_client):
+    def test_should_send_the_message_and_anonymize_it(self, mock_now, mock_client):
         from .models import Message
         from .tasks import send_message
         from django.conf import settings
@@ -279,3 +279,4 @@ class TaskSendMessageTest(TestCase):
             message.twilio_message_sid, "XXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         )
         self.assertEqual(message.dt, mock_now.return_value)
+        self.assertEqual(message.receiver, "")

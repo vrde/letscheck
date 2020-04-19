@@ -174,7 +174,7 @@ class TaskClassifyTest(TestCase):
         from .models import News
 
         news = News.objects.create(
-            title="Coronavirus is a bioweapon leaked from Wuhan lab",
+            title="Boil garlic to fix coronavirus",
             description="Not true",
             canned_response="fake news",
         )
@@ -190,7 +190,7 @@ class TaskClassifyTest(TestCase):
             sender="2",
             receiver="1",
             is_incoming=True,
-            body="Coronavirus is bioweapon leaked from Wuhan lab",
+            body="Garlic cures Coronavirus",
         )
         case = Case.objects.get(pk=message.pk)
         classify(case.pk)

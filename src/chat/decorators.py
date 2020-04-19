@@ -30,3 +30,33 @@ def validate_twilio_request(f):
             return HttpResponseForbidden()
 
     return decorated_function
+
+
+def validate_twilio_or_sulla_request(f):
+    """Validates that incoming requests genuinely originated from Twilio"""
+
+    @wraps(f)
+    def decorated_function(request, *args, **kwargs):
+        request_valid_sulla = (
+            request.META.get("HTTP_X_SULLA_SHARED_SECRET", "")
+            == settings.SULLA_SHARED_SECRET
+        )
+        # Create an instance of the RequestValidator class
+        validator = RequestValidator(settings.TWILIO_AUTH_TOKEN)
+
+        # Validate the request using its URL, POST data,
+        # and X-TWILIO-SIGNATURE header
+        request_valid = validator.validate(
+            request.build_absolute_uri(),
+            request.POST,
+            request.META.get("HTTP_X_TWILIO_SIGNATURE", ""),
+        )
+
+        # Continue processing the request if it's valid (or if DEBUG is True)
+        # and return a 403 error if it's not
+        if request_valid_sulla or request_valid or settings.DEBUG:
+            return f(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
+
+    return decorated_function

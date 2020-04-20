@@ -146,11 +146,11 @@ body {
   border-width: 0 2rem 2rem 0;
   border-color: transparent white transparent transparent;
   top: 0;
-  left: -2rem;
+  left: -1.9rem;
 }
 .bubble:before {
   border-right-color: rgba(0, 0, 0, 0.15);
-  left: -2.1rem;
+  left: -2rem;
 }
 
 .bubble h1,

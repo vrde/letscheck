@@ -15,3 +15,7 @@ def index(request):
     return render(
         request, "content/index.html", {"news": News.objects.all(), "message": MSG}
     )
+
+
+def how_it_works(request):
+    return render(request, "content/how_it_works.html")

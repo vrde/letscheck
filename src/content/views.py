@@ -11,9 +11,9 @@ Glad to share this."""
 
 
 def index(request):
-    all_news = News.objects.all()
+    all_news = News.objects.select_related('rating')
     return render(
-        request, "content/index.html", {"news": News.objects.all(), "message": MSG}
+        request, "content/index.html", {"news": all_news, "message": MSG}
     )
 
 

@@ -6,20 +6,17 @@ from django.test import Client, TestCase
 class ContentViewTest(TestCase):
     def setUp(self):
         self.c = Client()
-        self.c.force_login(User.objects.get_or_create(username="testuser")[0])
 
     def test_index_should_display_news(self):
         from .views import index
         from triage.models import News, Rating
 
-        rating = Rating(name="rating1")
-        rating.save()
+        rating = Rating.objects.create(name="rating1")
 
-        news = News(
+        news = News.objects.create(
             title="title1",
             description="description1",
             rating=rating)
-        news.save()
 
         response = self.c.get(reverse(index))
         displayed_news = response.context["news"]

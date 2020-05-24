@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from triage.models import News
+from django.db.models import Count
 
 
 MSG = """Pass it please.
@@ -11,7 +12,7 @@ Glad to share this."""
 
 
 def index(request):
-    all_news = News.objects.select_related('rating')
+    all_news = News.objects.select_related('rating').annotate(cases=Count('case'))
     return render(
         request, "content/index.html", {"news": all_news, "message": MSG}
     )

@@ -12,7 +12,7 @@ Glad to share this."""
 
 
 def index(request):
-    all_news = News.objects.select_related('rating').annotate(cases=Count('case'))
+    all_news = News.objects.select_related('rating').annotate(cases_count=Count('case'))
     return render(
         request, "content/index.html", {"news": all_news, "message": MSG}
     )

@@ -65,4 +65,4 @@ class ContentViewTest(TestCase):
         self.assertEqual(displayed_news[0].title, "title1")
         self.assertEqual(displayed_news[0].description, "description1")
         self.assertEqual(displayed_news[0].rating.name, "rating1")
-        self.assertEqual(displayed_news[0].cases, 2)
+        self.assertEqual(displayed_news[0].cases_count, 2)

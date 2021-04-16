@@ -5,7 +5,7 @@ certifi==2019.11.28
 chardet==3.0.4
 Django==3.0.12
 django-crispy-forms==1.9.0
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-picklefield==2.1.1
 django-q==1.2.1
 idna==2.9

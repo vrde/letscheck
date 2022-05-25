@@ -9,7 +9,7 @@ django-debug-toolbar==2.2
 django-picklefield==2.1.1
 django-q==1.2.1
 idna==2.9
-PyJWT==1.7.1
+PyJWT==2.4.0
 python-dateutil==2.8.1
 pytz==2019.3
 requests==2.23.0
